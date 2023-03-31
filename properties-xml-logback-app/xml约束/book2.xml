@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<书架
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.itcast.cn"
+    xsi:schemaLocation="http://www.itcast.cn data.xsd">
+   <书>
+       <书名>从入门到删除</书名>
+       <作者>dlei</作者>
+       <售价>9.9</售价>
+   </书>
+    <书>
+        <书名>从入门到删除</书名>
+        <作者>dlei</作者>
+        <售价>0.9</售价>
+    </书>
+</书架>

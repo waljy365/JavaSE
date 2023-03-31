@@ -1,0 +1,63 @@
+package com.itheima.d3_method_references;
+
+import com.itheima.d1_arrays.Student;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+/**
+ * 目标：了解静态方法引用、实例方法引用，简化Lambda表达式。
+ */
+public class Test1 {
+    public static void main(String[] args) {
+        Student[] students = new Student[4];
+        students[0] = new Student("蜘蛛精", 169.5, 23);
+        students[1] = new Student("紫霞", 163.8, 26);
+        students[2] = new Student("紫霞", 163.8, 26);
+        students[3] = new Student("至尊宝", 167.5, 24);
+
+        // 原始写法：对数组中的学生对象，按照年龄升序排序
+        // Arrays.sort(students, new Comparator<Student>() {
+        //     @Override
+        //     public int compare(Student o1, Student o2) {
+        //         return o1.getAge() - o2.getAge(); // 按照年龄升序排序
+        //     }
+        // });
+
+        // 简化1 : 使用Lambda简化后的形式
+        // Arrays.sort(students, (Student o1, Student o2) ->{
+        //         return o1.getAge() - o2.getAge(); // 按照年龄升序排序
+        // });
+
+        // Arrays.sort(students, ( o1,  o2) ->
+        //      o1.getAge() - o2.getAge()  // 按照年龄升序排序
+        // );
+
+        // 简化2 : 静态方法引用
+        Arrays.sort(students, CompareByData::compareByAge);
+
+        System.out.println("--------------------------------------------------------------");
+
+        // 对年龄降序排序
+        // Arrays.sort(students, new Comparator<Student>() {
+        //     @Override
+        //     public int compare(Student o1, Student o2) {
+        //         return o2.getAge() - o1.getAge(); // 按照年龄升序排序
+        //     }
+        // });
+
+        // 简化1 : 使用Lambda简化后的形式
+        // Arrays.sort(students, (Student o1, Student o2) ->{
+        //         return o2.getAge() - o1.getAge(); // 按照年龄升序排序
+        // });
+
+        // Arrays.sort(students, ( o1,  o2) ->
+        //      o2.getAge() - o1.getAge() // 按照年龄升序排序
+        // );
+        // 简化2 : 实例方法引用
+        Arrays.sort(students, new CompareByData()::compareByAgeDesc // 按照年龄升序排序
+        );
+
+        System.out.println(Arrays.toString(students));
+    }
+}
